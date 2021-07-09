@@ -24,7 +24,7 @@ public class SortingUtil {
         }
     }
 
-    public static int partition(int[] array, int begin, int end) {
+    private static int partition(int[] array, int begin, int end) {
         int pivot = end;
 
         int counter = begin;
@@ -39,7 +39,7 @@ public class SortingUtil {
         return counter;
     }
 
-    public static void swap(int[] arr, int first, int second){
+    private static void swap(int[] arr, int first, int second){
         int temp = arr[first];
         arr[first] = arr[second];
         arr[second] = temp;
