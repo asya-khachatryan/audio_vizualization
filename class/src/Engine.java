@@ -1,4 +1,4 @@
-public class Engine implements Cloneable{
+public class Engine {
     private int horsePower;
     private int weight;
     private int mileage;
@@ -7,12 +7,6 @@ public class Engine implements Cloneable{
         this.horsePower = horsePower;
         this.weight = weight;
         this.mileage = mileage;
-    }
-
-    public Engine(Engine engine) {
-        this.horsePower = engine.horsePower;
-        this.weight = engine.weight;
-        this.mileage = engine.mileage;
     }
 
     public int getHorsePower() {
@@ -37,6 +31,10 @@ public class Engine implements Cloneable{
 
     public void setMileage(int mileage) {
         this.mileage = mileage;
+    }
+
+    public Engine copy() {
+        return new Engine(this.horsePower, this.weight, this.mileage);
     }
 
 }
