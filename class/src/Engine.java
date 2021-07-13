@@ -9,6 +9,9 @@ public class Engine {
         this.mileage = mileage;
     }
 
+    public Engine() {
+    }
+
     public int getHorsePower() {
         return horsePower;
     }
@@ -34,7 +37,10 @@ public class Engine {
     }
 
     public Engine copy() {
-        return new Engine(this.horsePower, this.weight, this.mileage);
+        Engine copyEngine = new Engine();
+        copyEngine.setHorsePower(horsePower);
+        copyEngine.setWeight(weight);
+        copyEngine.setMileage(mileage);
+        return copyEngine;
     }
-
 }
