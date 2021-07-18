@@ -76,8 +76,10 @@ public class Group {
         }
     }
 
-    public String printContent() {
-        return "hey";
+    public void printContent() {
+        this.toString();
+        subGroups.toString();
+        items.toString();
     }
 
     public void addGroup(Group group) {

@@ -6,13 +6,15 @@ public class Item {
     private String currency;
     private String name;
     private Group parent;
+    private Configuration configuration;
 
-    public Item(int id, int price, String currency, String name, Group parent) {
+    public Item(int id, int price, String currency, String name, Group parent, Configuration configuration) {
         this.id = id;
         this.price = price;
         this.currency = currency;
         this.name = name;
         this.parent = parent;
+        this.configuration = configuration;
     }
 
     public int getId() {
@@ -55,6 +57,14 @@ public class Item {
         this.parent = parent;
     }
 
+    public Configuration getConfiguration() {
+        return configuration;
+    }
+
+    public void setConfiguration(Configuration configuration) {
+        this.configuration = configuration;
+    }
+
     @Override
     public String toString() {
         return "    * Item ID: " + id + " - " + name + " - costs " + price + " " + currency;
@@ -62,5 +72,9 @@ public class Item {
 
     public String printContent() {
         return this.toString();
+    }
+
+    public double calculatePrice() {
+        return 0;
     }
 }
