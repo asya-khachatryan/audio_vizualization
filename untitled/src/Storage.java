@@ -27,4 +27,19 @@ public class Storage {
         }
         return null;
     }
+
+    public static Group makeGroup(String groupName) {
+        Group group = new Group(groupName);
+        Storage.getAllGroups().add(group);
+        return group;
+    }
+
+    public static Item makeItem(int itemId, int price, String currency, String itemName, Group group) {
+        Item item = new Item(itemId, price, currency, itemName, group);
+        group.addItem(item);
+        Storage.getAllItems().add(item);
+        return item;
+    }
+
+
 }

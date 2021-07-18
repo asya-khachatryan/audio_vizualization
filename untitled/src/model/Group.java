@@ -9,21 +9,25 @@ public class Group {
     private Group parent;
     private List<Item> items;
     private List<Group> subGroups;
+    private static int idSequence = 0;
 
-    public Group(int id, String name, Group parent) {
-        this.id = id;
+    public Group(String name, Group parent) {
+        this.id = ++idSequence;
         this.name = name;
         this.parent = parent;
         this.items = new ArrayList<>();
         this.subGroups = new ArrayList<>();
     }
 
-    public Group(int id, String name) {
-        this.id = id;
+    public Group(String name) {
+        this.id = ++idSequence;
         this.name = name;
         this.parent = null;
         this.items = new ArrayList<>();
         this.subGroups = new ArrayList<>();
+    }
+
+    public Group() {
     }
 
     public int getId() {
@@ -88,6 +92,5 @@ public class Group {
         items.add(item);
         item.setParent(this);
     }
-
 
 }
