@@ -27,9 +27,6 @@ public class Group {
         this.subGroups = new ArrayList<>();
     }
 
-    public Group() {
-    }
-
     public int getId() {
         return id;
     }
