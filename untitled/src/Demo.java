@@ -4,7 +4,7 @@ import model.Item;
 import java.util.Scanner;
 
 public class Demo {
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
 
     private static Group makeGroup() {
         System.out.println("Please write the name of a group");
@@ -33,7 +33,7 @@ public class Demo {
 
     public static void main(String[] args) {
         Group group = makeGroup();
-        while (!sc.nextLine().equals("Exit")) {
+        while (!sc.nextLine().equalsIgnoreCase("Continue")) {
             System.out.println("Enter the ID of its parent group or hit \"Enter\" to create a root-level group " +
                     "or type \"Continue\" to create an item");
             if (sc.hasNextInt()) {
@@ -41,25 +41,26 @@ public class Demo {
                 sc.nextLine();
                 Group parent = Storage.findParent(parentId);
                 parent.addGroup(group);
-            }
-
-//            while (sc.hasNextLine() && !command.equalsIgnoreCase("continue")) {
-//
-//                command = sc.nextLine();
-//            }
-            if (sc.nextLine().equals("sds")) {
+                group = makeGroup();
+                continue;
+            } else if (sc.nextLine().equalsIgnoreCase("Enter")) {
                 group.setParent(null);
                 group = makeGroup();
+                continue;
             } else {
-                makeItem(group);
+                break;
             }
         }
-        System.out.println("------------------items----------------------------");
-        Storage.getAllItems().forEach(System.out::println);
-        System.out.println("---------------groups-----------------------------------");
-        Storage.getAllGroups().forEach(System.out::println);
+        while (!sc.nextLine().equalsIgnoreCase("Exit")) {
+            Item item = makeItem(group);
+            group.addItem(item);
 
-        System.out.println("The hierarchy");
+            if (sc.nextLine().equalsIgnoreCase("Exit")) {
+                break;
+            }
+        }
+
+        //TODO: print the hierarchy
         System.exit(0);
     }
 }

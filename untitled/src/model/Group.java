@@ -75,8 +75,8 @@ public class Group {
         }
     }
 
-    public void printContent(Group group) {
-
+    public String printContent() {
+        return "hey";
     }
 
     public void addGroup(Group group) {
@@ -88,4 +88,6 @@ public class Group {
         items.add(item);
         item.setParent(this);
     }
+
+
 }

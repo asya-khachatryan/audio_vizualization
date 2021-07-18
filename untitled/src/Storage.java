@@ -21,7 +21,7 @@ public class Storage {
 
     public static Group findParent(int parentId) {
         for (int i = 0; i < allGroups.size(); i++) {
-            if (parentId == allGroups.get(i).getId()){
+            if (parentId == allGroups.get(i).getId()) {
                 return allGroups.get(i);
             }
         }
