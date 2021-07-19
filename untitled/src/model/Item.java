@@ -1,6 +1,8 @@
 package model;
 
 public class Item {
+    private static int idSequence = 0;
+
     private int id;
     private int price;
     private String currency;
@@ -8,8 +10,8 @@ public class Item {
     private Group parent;
     private Configuration configuration;
 
-    public Item(int id, int price, String currency, String name, Group parent, Configuration configuration) {
-        this.id = id;
+    public Item(int price, String currency, String name, Group parent, Configuration configuration) {
+        this.id = ++idSequence;
         this.price = price;
         this.currency = currency;
         this.name = name;

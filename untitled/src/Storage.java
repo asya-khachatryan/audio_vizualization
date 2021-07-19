@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Storage {
-    private static List<Group> allGroups = new ArrayList<>();
-    private static List<Item> allItems = new ArrayList<>();
-    private static List<Basket> allBaskets = new ArrayList<>();
+    private static final List<Group> allGroups = new ArrayList<>();
+    private static final List<Item> allItems = new ArrayList<>();
+    private static final List<Basket> allBaskets = new ArrayList<>();
 
     private Storage() {
     }
@@ -27,9 +27,9 @@ public class Storage {
     }
 
     public static Group findParent(int parentId) {
-        for (int i = 0; i < allGroups.size(); i++) {
-            if (parentId == allGroups.get(i).getId()) {
-                return allGroups.get(i);
+        for (Group group : allGroups) {
+            if (parentId == group.getId()) {
+                return group;
             }
         }
         return null;
@@ -41,9 +41,9 @@ public class Storage {
         return group;
     }
 
-    public static Item makeItem(int itemId, int price, String currency,
+    public static Item makeItem(int price, String currency,
                                 String itemName, Group group, Configuration configuration) {
-        Item item = new Item(itemId, price, currency, itemName, group, configuration);
+        Item item = new Item(price, currency, itemName, group, configuration);
         group.addItem(item);
         allItems.add(item);
         return item;

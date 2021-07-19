@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Group {
+    private static int idSequence = 0;
+
     private int id;
     private String name;
     private Group parent;
     private List<Item> items;
     private List<Group> subGroups;
-    private static int idSequence = 0;
 
     public Group(String name, Group parent) {
         this.id = ++idSequence;
