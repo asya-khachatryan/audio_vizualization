@@ -77,6 +77,6 @@ public class Item {
     }
 
     public double calculatePrice() {
-        return 0;
+        return this.getPrice() * this.getConfiguration().getResolution().getCoefficient();
     }
 }
