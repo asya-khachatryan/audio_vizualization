@@ -5,9 +5,9 @@ public class SortingUtil {
     private SortingUtil() {
     }
 
-    public static void insertionSort(List<Fruit> list) {
+    public static <T extends Comparable<T>> void insertionSort(List<T> list) {
         for (int i = 1; i < list.size(); i++) {
-            Fruit initial = list.get(i);
+            T initial = list.get(i);
             int j = i - 1;
             while (j >= 0 && list.get(j).compareTo(initial) > 0) {
                 list.set(j+1, list.get(j));
@@ -18,7 +18,7 @@ public class SortingUtil {
     }
 
 
-    public static void quickSort(List<Fruit> list, int low, int high) {
+    public static <T extends Comparable<T>> void quickSort(List<T> list, int low, int high) {
         if (low < high) {
             int pivot = partition(list, low, high);
             quickSort(list, low, pivot - 1);
@@ -26,7 +26,7 @@ public class SortingUtil {
         }
     }
 
-    private static int partition(List<Fruit> list, int begin, int end) {
+    private static <T extends Comparable<T>> int partition(List<T> list, int begin, int end) {
         int pivot = end;
 
         int counter = begin;
@@ -41,8 +41,8 @@ public class SortingUtil {
         return counter;
     }
 
-    private static void swap(List<Fruit> list, int first, int second) {
-        Fruit temp = list.get(first);
+    private static <T extends Comparable<T>> void swap(List<T> list, int first, int second) {
+        T temp = list.get(first);
         list.set(first, list.get(second));
         list.set(second, temp);
     }
