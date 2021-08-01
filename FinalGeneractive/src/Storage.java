@@ -28,27 +28,6 @@ public class Storage {
         return allBaskets;
     }
 
-    public static void readFromFile(File filename) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(filename));
-            while (reader.ready()) {
-                String[] data = reader.readLine().split(",");
-                int price = Integer.parseInt(data[1]);
-                String name = data[2];
-                String url = data[3];
-                int groupId = Integer.parseInt(data[4]);
-                Item item = new Item(price, name);
-                item.setImageUrl(url);
-                item.setParent(findItemParent(groupId));
-                addItem(item);
-            }
-            reader.close();
-        } catch (IOException e) {
-            System.out.println("File was not found");
-            System.out.println("or could not be opened.");
-        }
-    }
-
     public static Group findItemParent(int groupId) {
         return getAllGroups()
                 .stream()
@@ -107,6 +86,12 @@ public class Storage {
 
     public static void addItem(Item item) {
         allItems.add(item);
+    }
+
+    public static void saveAllItems (List<Item> items){
+        for (Item item: items) {
+            addItem(item);
+        }
     }
 
 
