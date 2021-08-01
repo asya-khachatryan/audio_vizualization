@@ -14,14 +14,9 @@ public class ArrList<T> {
         this.elements = 0;
     }
 
-    public Object[] copyArray() {
-        T[] newArray = Arrays.copyOf(array, elements + 1);
-        return newArray;
-    }
-
     public void add(T object) {
         if (arrayIsFull()) {
-            T[] newArray = (T[]) copyArray();
+            T[] newArray = (T[]) biggerArray();
             newArray[elements] = object;
             this.array = newArray;
             elements++;
@@ -31,17 +26,29 @@ public class ArrList<T> {
         }
     }
 
+    private boolean arrayIsFull() {
+        if (elements >= array.length) {
+            return true;
+        }
+        return false;
+    }
+
+    private Object[] biggerArray() {
+        T[] newArray = Arrays.copyOf(array, elements + 1);
+        return newArray;
+    }
+
     public void remove(T object) {
         for (int i = 0; i < this.elements; i++) {
             if (object.equals(array[i])) {
                 array[i] = null;
                 elements--;
-                a();
+                copyArrayWithoutNull();
             }
         }
     }
 
-    public void a() {
+    private void copyArrayWithoutNull() {
         T[] newArray = (T[]) new Object[elements];
         for (int i = 0, k = 0; i < elements + 1; i++) {
             if (array[i] == null) {
@@ -71,20 +78,13 @@ public class ArrList<T> {
         return this.elements;
     }
 
-    public T[] currentItems() {
+    private T[] currentItems() {
         T[] current = (T[]) new Object[elements];
         for (int i = 0; i < elements; i++) {
             current[i] = this.array[i];
         }
 
         return current;
-    }
-
-    public boolean arrayIsFull() {
-        if (elements >= array.length) {
-            return true;
-        }
-        return false;
     }
 
     @Override
